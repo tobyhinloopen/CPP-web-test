@@ -1,6 +1,6 @@
 #import "socket_stream_buffer.h"
-#import <iostream>
-
+#import "unexpected_underflow_exception.h"
+#import "socket_io_exception.h"
 #include <sys/socket.h>
 
 net::socket_stream_buffer::socket_stream_buffer(int socket_id):
@@ -14,10 +14,8 @@ net::socket_stream_buffer::~socket_stream_buffer() {
 }
 
 int net::socket_stream_buffer::underflow() {
-  if(gptr() < egptr()) {
-    std::cout << "Buffer not exhausted? Why underflow?" << std::endl;
-    return traits_type::to_int_type(*gptr());
-  }
+  if(gptr() < egptr())
+    throw unexpected_underflow_exception();
 
   auto number_of_bytes = recv(socket_id, input_buffer.begin(), buffer_size, 0);
   if(number_of_bytes > 0) {
@@ -26,8 +24,7 @@ int net::socket_stream_buffer::underflow() {
   } else if(number_of_bytes == 0) {
     return traits_type::eof();
   } else {
-    std::cout << "Something went terribly wrong receiving from socket." << std::endl;
-    return traits_type::eof();
+    throw socket_io_exception();
   }
 }
 
@@ -52,9 +49,7 @@ bool net::socket_stream_buffer::flush() {
     return true;
   int number_of_bytes = send(socket_id, pbase(), pptr()-pbase(), 0);
   setp(output_buffer.begin(), output_buffer.end()-1);
-  if(number_of_bytes == -1) {
-    std::cout << "Failed to write to socket!" << std::endl;
-    return false;
-  }
+  if(number_of_bytes == -1)
+    throw socket_io_exception();
   return true;
 }
