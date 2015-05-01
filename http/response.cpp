@@ -4,14 +4,6 @@ unsigned short http::response::status() const {
   return 200;
 }
 
-unsigned char http::response::http_major_version() const {
-  return 1;
-}
-
-unsigned char http::response::http_minor_version() const {
-  return 0;
-}
-
 const std::string http::response::content_type() const {
   return "text/plain";
 }
@@ -33,9 +25,7 @@ std::ostream & http::operator<<(std::ostream & out, const http::response & respo
 }
 
 void write_response_status_line(std::ostream & out, const http::response & response) {
-  out << "HTTP/" << (unsigned short)response.http_major_version();
-  out << '.' << (unsigned short)response.http_minor_version();
-  out << ' ' << response.status() << " \r\n";
+  out << "HTTP/1.0 " << response.status() << " \r\n";
 }
 
 void write_response_headers(std::ostream & out, const http::response & response) {
