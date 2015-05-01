@@ -2,7 +2,6 @@
 #import "http/response.h"
 
 int main() {
-  http::response response;
-  std::cout << response;
+  std::cout << http::response();
   return 0;
 }
