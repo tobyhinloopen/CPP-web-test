@@ -1,9 +1,10 @@
 #import "http/response.h"
 #import "net/tcp_server.h"
 #import "http/request_reader.h"
+#import <iostream>
 
 int main() {
-  std::cout << "Starting server @8080" << std::endl;
+  std::cout << "HTTP listening at 0.0.0.0:8080" << std::endl;
   net::tcp_server server(8080);
   while(true) {
     auto client = server.accept();
