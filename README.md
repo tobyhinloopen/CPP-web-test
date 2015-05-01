@@ -1,3 +1,9 @@
+Start: `make main && ./main`
+Test: `make test && ./test`
+Watch: `./watch`
+
+## Target DSL / Sample:
+
 ```
 int main() {
   HttpServer http_server();
