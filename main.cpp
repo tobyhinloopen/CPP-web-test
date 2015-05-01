@@ -1,6 +1,8 @@
 #import <iostream>
+#import "http/response.h"
 
 int main() {
-  std::cout << "Hello" << std::endl;
+  http::response response;
+  std::cout << response;
   return 0;
 }
