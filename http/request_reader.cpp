@@ -29,6 +29,6 @@ std::unique_ptr<http::request> http::request_reader::accept_request() {
 }
 
 void strip_newline(std::string & line) {
-  if (*line.rbegin() == '\r')
+  if(*line.rbegin() == '\r')
     line.erase(line.length() - 1);
 }
