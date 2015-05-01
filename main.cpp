@@ -1,14 +1,15 @@
 #import "http/response.h"
 #import "net/tcp_server.h"
+#import "http/request_reader.h"
 
 int main() {
   std::cout << "Starting server @8080" << std::endl;
   net::tcp_server server(8080);
   while(true) {
     auto client = server.accept();
-    std::string line;
-    std::getline(client->cin, line);
-    client->cout << line << "\r\n";
+    http::request_reader request_reader(client->cin);
+    auto http_request = request_reader.accept_request();
+    client->cout << http::response();
   }
   return 0;
 }
