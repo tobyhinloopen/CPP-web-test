@@ -1,0 +1,5 @@
+main
+test
+*.o
+.*depend
+.DS_Store
