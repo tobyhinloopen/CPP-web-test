@@ -1,12 +1,11 @@
-#import "request.h"
-#import "response.h"
+#import "request_handler.h"
 
 namespace http {
   class server {
   public:
-    server(std::function<http::response(http::request &)> request_handler);
+    server(request_handler request_handler_);
     void listen(unsigned short port);
   private:
-    std::function<http::response(http::request &)> request_handler;
+    request_handler request_handler_;
   };
 }

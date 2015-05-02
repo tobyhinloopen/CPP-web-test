@@ -1,7 +1,23 @@
 #import "response.h"
 
+http::response::response():
+response(200) {
+}
+
+http::response::response(std::string body):
+response(200, body) {
+}
+
+http::response::response(unsigned short status):
+response(status, "") {
+}
+
+http::response::response(unsigned short status, std::string body):
+status_(status), body_(body) {
+}
+
 unsigned short http::response::status() const {
-  return 200;
+  return status_;
 }
 
 const std::string http::response::content_type() const {
@@ -9,7 +25,11 @@ const std::string http::response::content_type() const {
 }
 
 size_t http::response::content_length() const {
-  return 0;
+  return body().length();
+}
+
+const std::string http::response::body() const {
+  return body_.str();
 }
 
 void write_response_status_line(std::ostream &, const http::response &);
@@ -34,6 +54,5 @@ void write_response_headers(std::ostream & out, const http::response & response)
 }
 
 void write_response_body(std::ostream & out, const http::response & response) {
-  if(response.content_length() == 0)
-    return;
+  out << response.body();
 }
