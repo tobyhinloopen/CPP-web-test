@@ -2,7 +2,7 @@
 #import <iostream>
 
 int main() {
-  http::server server([] (auto request) {
+  http::server server([] (http::request & request) {
     auto response = http::response(200);
     response << "Request method: " << request.method() << "\r\n";
     response << "URI: " << request.request_uri() << "\r\n";
