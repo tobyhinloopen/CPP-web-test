@@ -1,37 +1,40 @@
 CXX=g++
 CPPFLAGS=-Wall -Wextra -std=c++11 -Iinclude
 LDFLAGS=
-LDLIBS=
+LDLIBS=cpp_web.a
 
-TEST_SRCS=$(shell find . -name "*.cpp" -not -name "main.cpp")
+DEPS=$(shell find . -name "*.h" -or -name "*.cpp")
+SRCS=$(shell find . -name "*.cpp")
+
+LIB_SRCS=$(shell find . -name "*.cpp" -not -name "*test.cpp" -not -name "main.cpp")
+LIB_OBJS=$(subst .cpp,.o,$(LIB_SRCS))
+
+TEST_SRCS=$(shell find . -name "*test.cpp")
 TEST_OBJS=$(subst .cpp,.o,$(TEST_SRCS))
 
-MAIN_SRCS=$(shell find . -name "*.cpp" -not -path "./support/*" -not -name "*test.cpp")
+MAIN_SRCS=$(shell find . -name "main.cpp")
 MAIN_OBJS=$(subst .cpp,.o,$(MAIN_SRCS))
 
 all: test main
 
-main: $(MAIN_OBJS)
+cpp_web.a: $(LIB_OBJS)
+	ar rvs cpp_web.a $(LIB_OBJS)
+
+main: cpp_web.a $(MAIN_OBJS)
 	$(CXX) $(LDFLAGS) -o main $(MAIN_OBJS) $(LDLIBS)
 
-test: $(TEST_OBJS)
+test: cpp_web.a $(TEST_OBJS)
 	$(CXX) $(LDFLAGS) -o test $(TEST_OBJS) $(LDLIBS)
 
-depend: .main_depend .test_depend
+depend: .depend
 
-.main_depend: $(MAIN_SRCS)
-	rm -f ./.main_depend
-	$(CXX) $(CPPFLAGS) -MM $^>>./.main_depend
-
-.test_depend: $(TEST_SRCS)
-	rm -f ./.test_depend
-	$(CXX) $(CPPFLAGS) -MM $^>>./.test_depend
+.depend: $(DEPS)
+	$(CXX) $(CPPFLAGS) -MM $(SRCS) > ./.depend;
 
 clean:
-	rm -f $(TEST_OBJS) $(MAIN_OBJS)
+	rm -f $(LIB_OBJS) $(TEST_OBJS) $(MAIN_OBJS)
 
 dist-clean: clean
-	$(RM) *~ .main_depend .test_depend
+	$(RM) *~ .depend
 
-include .test_depend
-include .main_depend
+include .depend

@@ -1,5 +1,6 @@
 main
 test
 *.o
+*.a
 .*depend
 .DS_Store
