@@ -3,5 +3,5 @@
 #import <memory>
 
 namespace http {
-  typedef std::function<response(request &)> request_handler;
+  typedef std::function<response(const request &)> request_handler;
 }

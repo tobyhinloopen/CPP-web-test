@@ -2,10 +2,11 @@
 #import <iostream>
 
 int main() {
-  http::server server([] (http::request & request) {
+  http::server server([] (const http::request & request) {
     auto response = http::response(200);
     response << "Request method: " << request.method() << "\r\n";
     response << "URI: " << request.request_uri() << "\r\n";
+    response << "Remote Address: " << request.remote_address() << "\r\n";
     return response;
   });
   std::cout << "HTTP listening at 0.0.0.0:8080" << std::endl;

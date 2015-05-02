@@ -17,11 +17,8 @@ namespace http {
       body_ << fragment;
       return *this;
     }
-
-    friend std::ostream & operator<<(std::ostream &, const http::response &);
   private:
     unsigned short status_;
     std::ostringstream body_;
   };
-  std::ostream & operator<<(std::ostream &, const http::response &);
 }

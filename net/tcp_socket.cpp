@@ -15,3 +15,7 @@ net::tcp_socket::~tcp_socket() {
   cout.flush();
   shutdown(socket_id, SHUT_RDWR);
 }
+
+std::string net::tcp_socket::remote_address() const {
+  return std::string(inet_ntoa(socket_address.sin_addr));
+}

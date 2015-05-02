@@ -7,6 +7,7 @@ namespace net {
   public:
     tcp_socket(int socket_id, struct sockaddr_in socket_address);
     ~tcp_socket();
+    std::string remote_address() const;
   private:
     const int socket_id;
     const struct sockaddr_in socket_address;
