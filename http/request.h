@@ -1,17 +1,21 @@
 #import <string>
+#import "header_set.h"
 
 namespace http {
   class request {
   public:
-    request(std::string method, std::string request_uri);
-    request(std::string remote_address, std::string method, std::string request_uri);
+    request(const std::string method, const std::string request_uri);
+    request(const std::string method, const std::string request_uri, const header_set header_set);
     void remote_address(std::string remote_address);
     const std::string remote_address() const;
     const std::string method() const;
     const std::string request_uri() const;
+    const std::string operator[](const std::string key) const;
+    const header_set headers() const;
   private:
     std::string remote_address_;
-    std::string method_;
-    std::string request_uri_;
+    const std::string method_;
+    const std::string request_uri_;
+    const header_set header_set_;
   };
 }

@@ -1,5 +1,5 @@
-#import <ostream>
 #import <sstream>
+#import <string>
 
 namespace http {
   class response {
