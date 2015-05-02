@@ -6,14 +6,9 @@ LDLIBS=cpp_web.a
 DEPS=$(shell find . -name "*.h" -or -name "*.cpp")
 SRCS=$(shell find . -name "*.cpp")
 
-LIB_SRCS=$(shell find . -name "*.cpp" -not -name "*test.cpp" -not -name "main.cpp")
-LIB_OBJS=$(subst .cpp,.o,$(LIB_SRCS))
-
-TEST_SRCS=$(shell find . -name "*test.cpp")
-TEST_OBJS=$(subst .cpp,.o,$(TEST_SRCS))
-
-MAIN_SRCS=$(shell find . -name "main.cpp")
-MAIN_OBJS=$(subst .cpp,.o,$(MAIN_SRCS))
+LIB_OBJS=$(subst .cpp,.o,$(shell find . -name "*.cpp" -not -name "*test.cpp" -not -name "main.cpp"))
+TEST_OBJS=$(subst .cpp,.o,$(shell find . -name "*test.cpp"))
+MAIN_OBJS=$(subst .cpp,.o,$(shell find . -name "main.cpp"))
 
 all: test main
 
@@ -32,9 +27,9 @@ depend: .depend
 	$(CXX) $(CPPFLAGS) -MM $(SRCS) > ./.depend;
 
 clean:
-	rm -f $(LIB_OBJS) $(TEST_OBJS) $(MAIN_OBJS)
+	$(RM) $(LIB_OBJS) $(TEST_OBJS) $(MAIN_OBJS)
 
 dist-clean: clean
-	$(RM) *~ .depend
+	$(RM) .depend
 
 include .depend
