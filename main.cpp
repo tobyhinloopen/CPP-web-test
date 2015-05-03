@@ -4,16 +4,32 @@
 
 http::response handle_request(const http::request & request) {
   auto response = http::response(200);
-  response << "Request method: " << request.method() << "\r\n";
-  response << "URI: " << request.request_uri() << "\r\n";
-  response << "Remote Address: " << request.remote_address() << "\r\n";
 
-  response << "Request headers:\r\n";
+  response["Content-Type"] = "text/html; charset=utf-8";
+
+  response << "<title>Web CPP test</title>\r\n";
+  response << "<style>body { font-family: monospace; }</style>\r\n";
+  response << "<dl>\r\n";
+
+  response << "  <dt>Request method</dt>\r\n";
+  response << "  <dd>" << request.method() << "</dd>\r\n";
+
+  response << "  <dt>URI</dt>\r\n";
+  response << "  <dd>" << request.request_uri() << "</dd>\r\n";
+
+  response << "  <dt>Remote address</dt>\r\n";
+  response << "  <dd>" << request.remote_address() << "</dd>\r\n";
+
+  response << "  <dt>Request headers</dt>\r\n";
+  response << "  <dd><pre>";
+
   auto headers = request.headers();
-
   std::for_each(headers.begin(), headers.end(), [&] (const std::pair<const std::string, const std::string> & header) {
-    response << "  '" << header.first << "' = '" << header.second << "'\r\n";
+    response << "  <b>" << header.first << "</b>: " << header.second << "\r\n";
   });
+
+  response << "</pre></dd>\r\n";
+  response << "</dl>\r\n";
 
   return response;
 }
