@@ -34,9 +34,16 @@ TEST_CASE("http::response") {
     http::response response;
     response << "Sample text response\r\n";
 
-    REQUIRE(response.status() == 200);
-    REQUIRE(response.content_type() == "text/plain");
-    REQUIRE(response.content_length() == 22);
     REQUIRE(response.body() == "Sample text response\r\n");
+  }
+
+  SECTION("response with custom headers") {
+    http::response response;
+    response << "<title>Test response</title>\r\n<h1>Hello!</h1>\r\n";
+
+    response["Content-Type"] = "text/html";
+    REQUIRE(response.content_type() == "text/html");
+    REQUIRE(response["Content-Type"] == "text/html");
+    REQUIRE(response.content_length() == 47);
   }
 }
