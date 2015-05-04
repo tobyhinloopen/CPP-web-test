@@ -1,5 +1,5 @@
 CXX=g++
-CPPFLAGS=-Wall -Wextra -std=c++11 -Iinclude
+CPPFLAGS=-Wall -Wextra -std=c++11 -Iinclude -Ofast
 LDFLAGS=
 LDLIBS=cpp_web.a
 
