@@ -9,6 +9,9 @@ html::tag::tag(std::string tagname, html::attribute_set attributes):
 tagname(tagname), attributes(attributes) {
 }
 
+html::tag::~tag() {
+}
+
 std::string & html::tag::operator[](const std::string key) {
   return attributes[key];
 }

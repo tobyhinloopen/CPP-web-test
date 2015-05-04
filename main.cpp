@@ -9,24 +9,25 @@ http::response create_response(const http::request & request) {
 
   response["Content-Type"] = "text/html; charset=utf-8";
 
-  response << html::tag("title") << "Web CPP test" << html::tag("/title") << "\r\n";
-  response << html::tag("style") << "body { font-family: monospace; }" << html::tag("/style") << "\r\n";
+  response << html::element("title", "Web CPP test") << "\r\n";
+  response << html::element("style", "body { font-family: monospace; }") << "\r\n";
   response << html::tag("dl") << "\r\n";
 
-  response << html::tag("dt") << "Request method" << html::tag("/dt") << "\r\n";
-  response << html::tag("dd") << request.method() << html::tag("/dd") << "\r\n";
+  response << html::element("dt", "Request method") << "\r\n";
+  response << html::element("dd", request.method()) << "\r\n";
 
-  response << html::tag("dt") << "URI" << html::tag("/dt") << "\r\n";
-  response << html::tag("dd") << request.request_uri() << html::tag("/dd") << "\r\n";
+  response << html::element("dt", "URI") << "\r\n";
+  response << html::element("dd", request.request_uri()) <<  << "\r\n";
 
-  response << html::tag("dt") << "Remote address" << html::tag("/dt") << "\r\n";
-  response << html::tag("dd") << request.remote_address() << html::tag("/dd") << "\r\n";
+  response << html::element("dt", "Remote address") << "\r\n";
+  response << html::element("dd", request.remote_address()) << "\r\n";
 
-  response << html::tag("dt") << "Request headers" << html::tag("/dt") << "\r\n";
+  response << html::element("dt", "Request headers") << "\r\n";
   response << html::tag("dd") << html::tag("pre");
 
   auto headers = request.headers();
-  std::for_each(headers.begin(), headers.end(), [&] (const std::pair<const std::string, const std::string> & header) {
+  typedef std::pair<const std::string, const std::string> header_pair;
+  std::for_each(headers.begin(), headers.end(), [&] (const header_pair & header) {
     response << "  " << html::tag("b") << header.first << html::tag("/b") << ": " << header.second << "\r\n";
   });
 
