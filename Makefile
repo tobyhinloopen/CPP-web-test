@@ -1,6 +1,6 @@
-CXX=clang
+CXX=g++
 CPPFLAGS=-Wall -Wextra -std=c++11 -Iinclude -Ofast
-LDFLAGS=
+LDFLAGS=-lstdc++
 LDLIBS=cpp_web.a
 
 DEPS=$(shell find . -name "*.h" -or -name "*.cpp")
