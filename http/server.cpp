@@ -3,8 +3,8 @@
 #include "request_reader.h"
 #include "response_writer.h"
 
-http::server::server(const request_handler & request_handler_):
-request_handler_(request_handler_) {
+http::server::server(http::request_handler request_handler):
+request_handler(request_handler) {
 }
 
 void http::server::listen(unsigned short port) {
@@ -15,7 +15,7 @@ void http::server::listen(unsigned short port) {
     http::response_writer response_writer(client->cout);
     auto http_request = request_reader.accept_request();
     http_request->remote_address(client->remote_address());
-    auto http_response = request_handler_(*http_request);
+    auto http_response = request_handler(*http_request);
     response_writer.write_response(http_response);
   }
 }

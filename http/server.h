@@ -5,9 +5,9 @@
 namespace http {
   class server {
   public:
-    server(const request_handler & request_handler_);
+    server(const request_handler request_handler);
     void listen(unsigned short port);
   private:
-    const request_handler & request_handler_;
+    const request_handler request_handler;
   };
 }
