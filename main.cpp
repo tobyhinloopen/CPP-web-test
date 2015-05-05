@@ -35,6 +35,7 @@ http::response create_response(const http::request & request) {
 
   response["Content-Type"] = "text/html; charset=utf-8";
 
+  response << "<!DOCTYPE html>";
   response << html::element("title", "Web CPP test");
   response << html::element("style", "body { font-family: monospace; }");
 
