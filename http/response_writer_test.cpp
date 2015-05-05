@@ -1,5 +1,5 @@
-#import "catch.h"
-#import "response_writer.h"
+#include "catch.h"
+#include "response_writer.h"
 
 TEST_CASE("http::request_writer") {
   std::ostringstream response_stream;

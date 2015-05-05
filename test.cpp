@@ -1,4 +1,4 @@
 #define CATCH_CONFIG_MAIN
-#import "catch.h"
+#include "catch.h"
 
 // Look for *_test.cpp for test cases.

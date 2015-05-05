@@ -1,4 +1,6 @@
-#import <exception>
+#pragma once
+
+#include <exception>
 
 namespace net {
   class unexpected_underflow_exception : public std::exception {

@@ -1,6 +1,8 @@
-#import <sstream>
-#import <string>
-#import "header_set.h"
+#pragma once
+
+#include <sstream>
+#include <string>
+#include "header_set.h"
 
 namespace http {
   class response {

@@ -1,7 +1,9 @@
-#import <string>
-#import <map>
-#import <ostream>
-#import "attribute_set.h"
+#pragma once
+
+#include <string>
+#include <map>
+#include <ostream>
+#include "attribute_set.h"
 
 namespace html {
   class tag {

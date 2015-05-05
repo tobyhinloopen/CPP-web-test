@@ -1,4 +1,6 @@
-#import "tcp_socket.h"
+#pragma once
+
+#include "tcp_socket.h"
 #include <arpa/inet.h>
 
 namespace net {

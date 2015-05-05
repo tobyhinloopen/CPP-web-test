@@ -1,6 +1,5 @@
-#import "tcp_socket.h"
-#import <iostream>
-
+#include "tcp_socket.h"
+#include <iostream>
 #include <sys/socket.h>
 
 net::tcp_socket::tcp_socket(int socket_id, struct sockaddr_in socket_address):

@@ -1,5 +1,7 @@
-#import <iostream>
-#import "socket_stream_buffer.h"
+#pragma once
+
+#include "socket_stream_buffer.h"
+#include <iostream>
 #include <arpa/inet.h>
 
 namespace net {

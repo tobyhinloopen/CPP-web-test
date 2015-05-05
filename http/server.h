@@ -1,4 +1,6 @@
-#import "request_handler.h"
+#pragma once
+
+#include "request_handler.h"
 
 namespace http {
   class server {

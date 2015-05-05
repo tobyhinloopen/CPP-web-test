@@ -1,7 +1,9 @@
-#import "request.h"
-#import "header_set.h"
-#import <istream>
-#import <memory>
+#pragma once
+
+#include "request.h"
+#include "header_set.h"
+#include <istream>
+#include <memory>
 #include <tuple>
 
 namespace http {

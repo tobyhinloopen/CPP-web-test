@@ -992,7 +992,7 @@ namespace Catch {
 // #included from: catch_objc_arc.hpp
 #define TWOBLUECUBES_CATCH_OBJC_ARC_HPP_INCLUDED
 
-#import <Foundation/Foundation.h>
+#include <Foundation/Foundation.h>
 
 #ifdef __has_feature
 #define CATCH_ARC_ENABLED __has_feature(objc_arc)
@@ -2504,7 +2504,7 @@ namespace Catch {
 // #included from: internal/catch_objc.hpp
 #define TWOBLUECUBES_CATCH_OBJC_HPP_INCLUDED
 
-#import <objc/runtime.h>
+#include <objc/runtime.h>
 
 #include <string>
 
@@ -5590,7 +5590,7 @@ namespace Catch {
 #define TWOBLUECUBES_CATCH_EXCEPTION_TRANSLATOR_REGISTRY_HPP_INCLUDED
 
 #ifdef __OBJC__
-#import "Foundation/Foundation.h"
+#include "Foundation/Foundation.h"
 #endif
 
 namespace Catch {

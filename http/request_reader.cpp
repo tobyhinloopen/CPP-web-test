@@ -1,6 +1,6 @@
-#import "request_reader.h"
-#import <string>
-#import <iostream>
+#include "request_reader.h"
+#include <string>
+#include <iostream>
 
 http::request_reader::request_reader(std::istream & input_stream):
 input_stream(input_stream) {

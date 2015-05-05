@@ -1,6 +1,6 @@
-#import "socket_stream_buffer.h"
-#import "unexpected_underflow_exception.h"
-#import "socket_io_exception.h"
+#include "socket_stream_buffer.h"
+#include "unexpected_underflow_exception.h"
+#include "socket_io_exception.h"
 #include <sys/socket.h>
 
 net::socket_stream_buffer::socket_stream_buffer(int socket_id):
