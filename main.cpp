@@ -16,16 +16,15 @@ int main() {
 http::response create_response(const http::request & request);
 
 http::response handle_request(const http::request & request) {
-  auto start_time = std::chrono::high_resolution_clock::now();
+  const auto start_time = std::chrono::high_resolution_clock::now();
   auto response = create_response(request);
 
   for(int i = 0; i < 1000; ++i)
-    auto other_response = create_response(request);
+    create_response(request);
 
-  auto end_time = std::chrono::high_resolution_clock::now();
-  auto time_spent = end_time - start_time;
-
-  auto microsecs = std::chrono::duration_cast<std::chrono::microseconds>(time_spent).count();
+  const auto end_time = std::chrono::high_resolution_clock::now();
+  const auto time_spent = end_time - start_time;
+  const auto microsecs = std::chrono::duration_cast<std::chrono::microseconds>(time_spent).count();
   response << html::element("code", "1.000 documents generated in " + std::to_string(microsecs) + "μs.");
 
   return response;
