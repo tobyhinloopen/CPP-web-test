@@ -15,7 +15,8 @@ void http::server::listen(unsigned short port) {
     http::response_writer response_writer(client->cout);
     auto http_request = request_reader.accept_request();
     http_request->remote_address(client->remote_address());
-    auto http_response = request_handler_(*http_request);
+    const http::request & request = *http_request;
+    auto http_response = request_handler_(request);
     response_writer.write_response(http_response);
   }
 }
