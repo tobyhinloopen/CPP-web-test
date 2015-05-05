@@ -1,6 +1,6 @@
-#include "catch.h"
-#include "tag.h"
-#include <sstream>
+#import "catch.h"
+#import "tag.h"
+#import <sstream>
 
 TEST_CASE("html::tag") {
   SECTION("simple open tag") {

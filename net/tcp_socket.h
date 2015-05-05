@@ -1,8 +1,6 @@
-#pragma once
-
-#include "socket_stream_buffer.h"
-#include <iostream>
-#include <arpa/inet.h>
+#import "socket_stream_buffer.h"
+#import <iostream>
+#import <arpa/inet.h>
 
 namespace net {
   class tcp_socket {

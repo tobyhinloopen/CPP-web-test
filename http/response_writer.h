@@ -1,7 +1,5 @@
-#pragma once
-
-#include <ostream>
-#include "response.h"
+#import <ostream>
+#import "response.h"
 
 namespace http {
   class response_writer {

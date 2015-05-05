@@ -1,9 +1,7 @@
-#pragma once
-
-#include "tag.h"
-#include <sstream>
-#include <functional>
-#include <type_traits>
+#import "tag.h"
+#import <sstream>
+#import <functional>
+#import <type_traits>
 
 namespace html {
   class element : public tag {

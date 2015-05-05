@@ -1,6 +1,6 @@
-#include "catch.h"
-#include "element.h"
-#include <sstream>
+#import "catch.h"
+#import "element.h"
+#import <sstream>
 
 TEST_CASE("html::element") {
   SECTION("simple content element") {

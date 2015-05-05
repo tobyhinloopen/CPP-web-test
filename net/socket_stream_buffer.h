@@ -1,7 +1,5 @@
-#pragma once
-
-#include <streambuf>
-#include <array>
+#import <streambuf>
+#import <array>
 
 namespace net {
   class socket_stream_buffer : public std::streambuf {

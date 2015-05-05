@@ -1,6 +1,6 @@
-#include "tag.h"
-#include <sstream>
-#include <algorithm>
+#import "tag.h"
+#import <sstream>
+#import <algorithm>
 
 html::tag::tag(std::string tagname): tag(tagname, {}) {
 }

@@ -1,7 +1,5 @@
-#pragma once
-
-#include <string>
-#include "header_set.h"
+#import <string>
+#import "header_set.h"
 
 namespace http {
   class request {

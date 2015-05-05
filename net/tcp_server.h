@@ -1,8 +1,6 @@
-#pragma once
-
-#include "tcp_socket.h"
-#include <arpa/inet.h>
-#include <memory>
+#import "tcp_socket.h"
+#import <arpa/inet.h>
+#import <memory>
 
 namespace net {
   class tcp_server {
