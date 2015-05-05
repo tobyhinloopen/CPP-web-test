@@ -7,10 +7,11 @@
 namespace http {
   class response {
   public:
-    explicit response();
-    explicit response(std::string body);
-    explicit response(unsigned short status);
-    explicit response(unsigned short status, std::string body);
+    response();
+    response(const response &) = default;
+    response(std::string body);
+    response(unsigned short status);
+    response(unsigned short status, std::string body);
     unsigned short status() const;
     const std::string content_type() const;
     size_t content_length() const;
