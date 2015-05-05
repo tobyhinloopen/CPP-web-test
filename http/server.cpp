@@ -3,7 +3,7 @@
 #include "request_reader.h"
 #include "response_writer.h"
 
-http::server::server(request_handler request_handler_):
+http::server::server(const request_handler & request_handler_):
 request_handler_(request_handler_) {
 }
 
