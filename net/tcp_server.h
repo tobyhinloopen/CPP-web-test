@@ -2,6 +2,7 @@
 
 #include "tcp_socket.h"
 #include <arpa/inet.h>
+#include <memory>
 
 namespace net {
   class tcp_server {
