@@ -8,7 +8,7 @@ namespace http {
   class response {
   public:
     response();
-    response(const response &) = default;
+    response(const response &);
     response(std::string body);
     response(unsigned short status);
     response(unsigned short status, std::string body);

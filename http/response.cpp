@@ -4,6 +4,10 @@ http::response::response():
 response(200) {
 }
 
+http::response::response(const http::response & other):
+status_(other.status_), body_(other.body_.str()), header_set_(other.header_set_) {
+}
+
 http::response::response(std::string body):
 response(200, body) {
 }
